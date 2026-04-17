@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Rafael Zamora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #9b1c1c;
+    --white: #ffffff;
+    --black: #111111;
+    --text: #1a1a1a;
+    --text-mid: #444444;
+    --text-muted: #888888;
+    --border: #e0e0e0;
+    --border-light: #f0f0f0;
+    --serif: 'EB Garamond', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --nav-h: 56px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--serif); background: var(--white); color: var(--text); font-size: 18px; line-height: 1.75; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--crimson); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; z-index: 100; }
+  .nav-brand { font-family: var(--serif); font-size: 1.05rem; color: var(--white); font-weight: 400; letter-spacing: 0.02em; text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+  .nav-links a { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.85); text-decoration: none; padding: 6px 14px; border-radius: 2px; transition: background 0.15s, color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,0.15); color: var(--white); }
+  .lang-toggle { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); color: var(--white); padding: 4px 12px; cursor: pointer; border-radius: 2px; margin-left: 1rem; transition: background 0.15s; }
+  .lang-toggle:hover { background: rgba(255,255,255,0.22); }
+
+  .banner { margin-top: var(--nav-h); width: 100%; background: var(--white); border-bottom: 1px solid var(--border); overflow: hidden; line-height: 0; }
+  .banner svg { width: 100%; height: auto; display: block; }
+
+  .page { max-width: 860px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+
+  .page-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+  .page-header h1 { font-size: 2rem; font-weight: 400; color: var(--black); margin-bottom: 0.2rem; }
+  .page-header .subtitle { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
+
+  .section-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crimson); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 300px; }
+
+  /* Interests */
+  .interests-text { font-size: 1.02rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 0.9rem; }
+  .interests-block { margin-bottom: 3rem; }
+
+  /* Publications */
+  .pub-list { margin-bottom: 3rem; }
+  .pub-item { padding: 1.1rem 0; border-bottom: 1px solid var(--border-light); display: grid; grid-template-columns: 2rem 1fr; gap: 0.75rem; align-items: baseline; }
+  .pub-item:first-child { border-top: 1px solid var(--border-light); }
+  .pub-num { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); padding-top: 0.2rem; }
+  .pub-body { font-size: 0.97rem; color: var(--text-mid); line-height: 1.75; }
+  .pub-body .authors { color: var(--text); }
+  .pub-body .title { font-style: italic; }
+  .pub-body .journal { color: var(--text-muted); font-size: 0.9rem; }
+
+  /* Grants */
+  .grant-list { margin-bottom: 3rem; }
+  .grant-item { padding: 1.1rem 0 1.1rem 1.25rem; border-bottom: 1px solid var(--border-light); border-left: 2px solid var(--border); margin-bottom: 0; }
+  .grant-item:first-child { border-top: 1px solid var(--border-light); }
+  .grant-role { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.2rem; }
+  .grant-title { font-size: 0.97rem; color: var(--text); line-height: 1.7; margin-bottom: 0.2rem; }
+  .grant-meta { font-family: var(--mono); font-size: 0.68rem; color: var(--text-muted); }
+
+  /* Events */
+  .event-list { margin-bottom: 3rem; }
+  .event-item { padding: 1.1rem 0; border-bottom: 1px solid var(--border-light); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: baseline; }
+  .event-item:first-child { border-top: 1px solid var(--border-light); }
+  .event-role { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem; }
+  .event-name { font-size: 0.97rem; color: var(--text); font-weight: 500; }
+  .event-where { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.1rem; }
+  .event-date { font-family: var(--mono); font-size: 0.68rem; color: var(--text-muted); white-space: nowrap; text-align: right; }
+
+  footer { border-top: 2px solid var(--crimson); background: var(--white); padding: 2rem 2.5rem 1.25rem; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .footer-left { display: flex; flex-direction: column; gap: 0.25rem; }
+  .footer-name { font-family: var(--serif); font-size: 1.05rem; color: var(--black); }
+  .footer-inst { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.06em; color: var(--text-muted); text-transform: uppercase; }
+  .footer-right { display: flex; flex-direction: column; gap: 0.3rem; }
+  .footer-detail { font-family: var(--mono); font-size: 0.72rem; color: var(--text-mid); }
+  .footer-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  .footer-detail a { color: var(--crimson); text-decoration: none; }
+  .footer-detail a:hover { text-decoration: underline; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 1rem; }
+  .footer-copy { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
+  .footer-math { font-style: italic; font-family: var(--serif); color: var(--text-muted); font-size: 1rem; }
+
+  .es { display: none; }
+  @media (max-width: 680px) { .nav-links { display: none; } .event-item { grid-template-columns: 1fr; gap: 0.25rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Rafael Zamora</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="en">Home</a><a href="index.html" class="es">Inicio</a></li>
+    <li><a href="research.html" class="active en">Research</a><a href="research.html" class="active es">Investigación</a></li>
+    <li><a href="teaching.html" class="en">Teaching</a><a href="teaching.html" class="es">Docencia</a></li>
+    <li><a href="people.html" class="en">People</a><a href="people.html" class="es">Personas</a></li>
+    
+  </ul>
+  <button class="lang-toggle" onclick="toggleLang()" id="langBtn">ES</button>
+</nav>
+
+<div class="banner">
+  <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <rect width="1200" height="200" fill="white"/>
+    <g stroke="#111" stroke-width="1.2" stroke-linecap="round">
+      <g transform="translate(150,10)">
+        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
+        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
+        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
+        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
+        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
+        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
+        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
+        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
+        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
+        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
+        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
+        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
+        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
+      </g>
+      <g transform="translate(450,10)">
+        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
+        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
+        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
+        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
+        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
+        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
+        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
+        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
+        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
+        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
+        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
+        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
+        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
+      </g>
+      <g transform="translate(750,10)">
+        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
+        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
+        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
+        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
+        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
+        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
+        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
+        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
+        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
+        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
+        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
+        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
+        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
+      </g>
+      <g transform="translate(1050,10)">
+        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
+        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
+        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
+        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
+        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
+        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
+        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
+        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
+        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<div class="page">
+
+  <div class="page-header">
+    <h1 class="en">Research</h1>
+    <h1 class="es">Investigación</h1>
+    <div class="subtitle en">Descriptive Set Theory · Mathematical Logic</div>
+    <div class="subtitle es">Teoría Descriptiva de Conjuntos · Lógica Matemática</div>
+  </div>
+
+  <!-- INTERESTS -->
+  <div class="section-label en">Research Interests</div>
+  <div class="section-label es">Intereses de Investigación</div>
+  <div class="interests-block">
+    <p class="interests-text en">My area of specialization is Descriptive Set Theory. I study the definable structure of the continuum — how the complexity of sets in Polish spaces can be measured, compared, and separated — working primarily within the Borel and projective hierarchies, with tools from topology and mathematical logic.</p>
+    <p class="interests-text en">I am also interested in interactions with other areas of mathematics, in particular dynamical topology and continuous logic.</p>
+    <p class="interests-text es">Mi área de especialización es la Teoría Descriptiva de Conjuntos. Estudio la estructura definible del continuo — cómo puede medirse, compararse y separarse la complejidad de los conjuntos en espacios polacos — trabajando principalmente dentro de las jerarquías de Borel y proyectiva, con herramientas de topología y lógica matemática.</p>
+    <p class="interests-text es">También me interesan las interacciones con otras áreas de la matemática, en particular la topología dinámica y la lógica continua.</p>
+  </div>
+
+  <!-- PUBLICATIONS -->
+  <div class="section-label en">Publications</div>
+  <div class="section-label es">Publicaciones</div>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <span class="pub-num">1</span>
+      <div class="pub-body">
+        <span class="authors">Zamora, R.</span>
+        <span class="title"> Separation of Analytic Sets by Rectangles of Low Complexity.</span>
+        <span class="journal"> <em>Topology and its Applications</em> 182 (2015), 77–97.</span>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-num">2</span>
+      <div class="pub-body">
+        <span class="authors">Lecomte, D.; Zamora, R.</span>
+        <span class="title"> Injective Tests of Low Complexity in the Plane.</span>
+        <span class="journal"> <em>MLQ Mathematical Logic Quarterly</em> 65, no. 2 (2019), 134–169.</span>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-num">3</span>
+      <div class="pub-body">
+        <span class="authors">Berenstein, A.; Zamora, R.</span>
+        <span class="title"> Isometry Groups of Borel Randomizations.</span>
+        <span class="journal"> <em>Notre Dame Journal of Formal Logic</em> 61, no. 2 (2020), 297–316.</span>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-num">4</span>
+      <div class="pub-body">
+        <span class="authors">Carmona, J.F.; Davila, K.; Onshuus, A.; Zamora, R.</span>
+        <span class="title"> A Fixed-Point Theorem for Definably Amenable Groups.</span>
+        <span class="journal"> <em>Archive for Mathematical Logic</em> 60 (2021), 413–424.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PREPRINTS -->
+  <div class="section-label en">Preprints</div>
+  <div class="section-label es">Preimpresos</div>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <span class="pub-num">1</span>
+      <div class="pub-body">
+        <span class="authors">Bazhenov, N.; Monin, B.; San Mauro, L.; Zamora, R.</span>
+        <span class="title"> On the Computational Content of the Theory of Borel Equivalence Relations.</span>
+        <span class="journal"> <em>Oberwolfach Preprints</em> OWP-2021-06 (2021). Research in Pairs, Mathematisches Forschungsinstitut Oberwolfach. DOI: <a href="https://doi.org/10.14760/OWP-2021-06" target="_blank" style="color:var(--crimson);text-decoration:none;">10.14760/OWP-2021-06</a></span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GRANTS -->
+  <div class="section-label en">Funding</div>
+  <div class="section-label es">Financiamiento</div>
+  <div class="grant-list">
+
+    <div class="grant-item">
+      <div class="grant-role en">Principal Investigator</div>
+      <div class="grant-role es">Investigador Principal</div>
+      <div class="grant-title en">Nuevas perspectivas en el estudio de grupos dentro del universo de Shelah</div>
+      <div class="grant-title es">Nuevas perspectivas en el estudio de grupos dentro del universo de Shelah</div>
+      <div class="grant-meta en">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica</div>
+      <div class="grant-meta es">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica</div>
+    </div>
+
+    <div class="grant-item">
+      <div class="grant-role en">Collaborator</div>
+      <div class="grant-role es">Colaborador</div>
+      <div class="grant-title en">Avances en la Teoría de Factorización de Vectores Suaves y Analíticos de Representaciones de Grupos de Lie</div>
+      <div class="grant-title es">Avances en la Teoría de Factorización de Vectores Suaves y Analíticos de Representaciones de Grupos de Lie</div>
+      <div class="grant-meta en">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica · 2024</div>
+      <div class="grant-meta es">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica · 2024</div>
+    </div>
+
+  </div>
+
+  <!-- SERVICE -->
+  <div class="section-label en">Editorial & Service</div>
+  <div class="section-label es">Editorial y Servicio</div>
+  <div class="grant-list" style="margin-bottom:3rem;">
+
+    <div class="grant-item">
+      <div class="grant-role en">Director</div>
+      <div class="grant-role es">Director</div>
+      <div class="grant-title"><em>Revista de Matemática: Teoría y Aplicaciones</em></div>
+      <div class="grant-meta en">Universidad de Costa Rica · <a href="https://revistas.ucr.ac.cr/index.php/matematica" target="_blank" style="color:var(--crimson);text-decoration:none;">revistas.ucr.ac.cr</a></div>
+      <div class="grant-meta es">Universidad de Costa Rica · <a href="https://revistas.ucr.ac.cr/index.php/matematica" target="_blank" style="color:var(--crimson);text-decoration:none;">revistas.ucr.ac.cr</a></div>
+    </div>
+
+    <div class="grant-item">
+      <div class="grant-role en">Advisory Council</div>
+      <div class="grant-role es">Consejo Asesor</div>
+      <div class="grant-title en">CIMPA — Centro de Investigaciones en Matemáticas Puras y Aplicadas</div>
+      <div class="grant-title es">CIMPA — Centro de Investigaciones en Matemáticas Puras y Aplicadas</div>
+      <div class="grant-meta en">Universidad de Costa Rica</div>
+      <div class="grant-meta es">Universidad de Costa Rica</div>
+    </div>
+
+  </div>
+
+  <!-- EVENTS -->
+  <div class="section-label en">Academic Events</div>
+  <div class="section-label es">Eventos Académicos</div>
+  <div class="event-list">
+
+    <div class="event-item">
+      <div>
+        <div class="event-role en">Main Organizer</div>
+        <div class="event-role es">Organizador Principal</div>
+        <div class="event-name en">Latin American Symposium on Mathematical Logic (SLALM)</div>
+        <div class="event-name es">Simposio Latinoamericano de Lógica Matemática (SLALM)</div>
+        <div class="event-where">San Pedro, Costa Rica</div>
+      </div>
+      <div class="event-date">July 26–30, 2022</div>
+    </div>
+
+    <div class="event-item">
+      <div>
+        <div class="event-role en">Scientific Committee</div>
+        <div class="event-role es">Comité Científico</div>
+        <div class="event-name en">Latin American Symposium on Mathematical Logic (SLALM)</div>
+        <div class="event-name es">Simposio Latinoamericano de Lógica Matemática (SLALM)</div>
+        <div class="event-where">Bogotá, Colombia</div>
+      </div>
+      <div class="event-date en">June 2026</div>
+      <div class="event-date es">Junio 2026</div>
+    </div>
+
+    <div class="event-item">
+      <div>
+        <div class="event-role en">Main Organizer</div>
+        <div class="event-role es">Organizador Principal</div>
+        <div class="event-name en">Mathematics School of Latin America and the Caribbean (EMALCA)</div>
+        <div class="event-name es">Escuela de Matemática de América Latina y el Caribe (EMALCA)</div>
+        <div class="event-where">Liberia, Costa Rica</div>
+      </div>
+      <div class="event-date en">Feb. 12–25, 2024</div>
+      <div class="event-date es">12–25 feb. 2024</div>
+    </div>
+
+    <div class="event-item">
+      <div>
+        <div class="event-role en">Organizing Committee</div>
+        <div class="event-role es">Comité Organizador</div>
+        <div class="event-name en">Mathematics School of Latin America and the Caribbean (MALCA)</div>
+        <div class="event-name es">Escuela de Matemática de América Latina y el Caribe (MALCA)</div>
+        <div class="event-where">Turrialba, Costa Rica</div>
+      </div>
+      <div class="event-date en">July 22 – Aug. 3, 2019</div>
+      <div class="event-date es">22 jul. – 3 ago. 2019</div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span class="footer-name">Rafael Zamora</span>
+      <span class="footer-inst">Escuela de Matemática &amp; CIMPA · Universidad de Costa Rica</span>
+    </div>
+    <div class="footer-right">
+      <div class="footer-detail"><span class="footer-label en">Office</span><span class="footer-label es">Oficina</span> &nbsp;212, CIMPA</div>
+      <div class="footer-detail"><span class="footer-label en">Phone</span><span class="footer-label es">Tel.</span> &nbsp;+506 2511-3714</div>
+      <div class="footer-detail"><span class="footer-label en">Email</span><span class="footer-label es">Correo</span> &nbsp;<a href="mailto:rafael.zamora_c@ucr.ac.cr">rafael.zamora_c@ucr.ac.cr</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Rafael Zamora</span>
+    <span class="footer-math">2<sup style="font-size:0.65em">&#x3C9;</sup></span>
+  </div>
+</footer>
+
+<script>
+  let isES = false;
+  function toggleLang() {
+    isES = !isES;
+    document.getElementById('langBtn').textContent = isES ? 'EN' : 'ES';
+    document.querySelectorAll('.en').forEach(el => el.style.display = isES ? 'none' : '');
+    document.querySelectorAll('.es').forEach(el => el.style.display = isES ? '' : 'none');
+  }
+  document.querySelectorAll('.es').forEach(el => el.style.display = 'none');
+</script>
+</body>
+</html>
