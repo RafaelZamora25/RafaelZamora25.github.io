@@ -23,13 +23,25 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--serif); background: var(--white); color: var(--text); font-size: 18px; line-height: 1.75; }
-nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--crimson); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; z-index: 100; }
+nav { position: fixed; top: 0; left: 0; right: 0; background: var(--crimson); z-index: 100; }
+.nav-bar { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; }
 .nav-brand { font-family: var(--serif); font-size: 1.05rem; color: var(--white); font-weight: 400; letter-spacing: 0.02em; text-decoration: none; }
+.nav-right { display: flex; align-items: center; gap: 0.25rem; }
 .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
 .nav-links a { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.85); text-decoration: none; padding: 6px 14px; border-radius: 2px; transition: background 0.15s, color 0.15s; }
 .nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,0.15); color: var(--white); }
 .lang-toggle { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); color: var(--white); padding: 4px 12px; cursor: pointer; border-radius: 2px; margin-left: 1rem; transition: background 0.15s; }
 .lang-toggle:hover { background: rgba(255,255,255,0.22); }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; margin-left: 0.75rem; flex-direction: column; gap: 5px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 1px; transition: transform 0.2s, opacity 0.2s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-dropdown { display: none; border-top: 1px solid rgba(255,255,255,0.15); }
+.nav-dropdown.open { display: block; }
+.nav-dropdown ul { list-style: none; padding: 0.5rem 0; }
+.nav-dropdown ul li a { display: block; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 2.5rem; transition: background 0.15s; }
+.nav-dropdown ul li a:hover, .nav-dropdown ul li a.active { background: rgba(255,255,255,0.12); color: var(--white); }
 .banner { margin-top: var(--nav-h); width: 100%; background: var(--white); border-bottom: 1px solid var(--border); overflow: hidden; line-height: 0; }
 .banner svg { width: 100%; height: auto; display: block; }
 .page { max-width: 860px; margin: 0 auto; padding: 3.5rem 2rem 5rem; display: grid; grid-template-columns: 1fr 280px; gap: 4rem; align-items: start; }
@@ -65,19 +77,40 @@ footer { border-top: 2px solid var(--crimson); background: var(--white); padding
 .footer-copy { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
 .footer-math { font-style: italic; font-family: var(--serif); color: var(--text-muted); font-size: 1rem; }
 .es { display: none; }
-@media (max-width: 680px) { .page { grid-template-columns: 1fr; gap: 2.5rem; } .nav-links { display: none; } .name-block h1 { font-size: 1.8rem; } }
+@media (max-width: 680px) {
+  .page { grid-template-columns: 1fr; gap: 2.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .name-block h1 { font-size: 1.8rem; }
+  .banner { margin-top: var(--nav-h); }
+}
 </style>
 </head>
 <body>
 <nav>
-<a class="nav-brand" href="index.html">Rafael Zamora</a>
-<ul class="nav-links">
-<li><a href="index.html" class="active en">Home</a><a href="index.html" class="active es">Inicio</a></li>
-<li><a href="research.html" class="en">Research</a><a href="research.html" class="es">Investigación</a></li>
-<li><a href="teaching.html" class="en">Teaching</a><a href="teaching.html" class="es">Docencia</a></li>
-<li><a href="people.html" class="en">People</a><a href="people.html" class="es">Personas</a></li>
-</ul>
-<button class="lang-toggle" onclick="toggleLang()" id="langBtn">ES</button>
+  <div class="nav-bar">
+    <a class="nav-brand" href="index.html">Rafael Zamora</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active en">Home</a><a href="index.html" class="active es">Inicio</a></li>
+        <li><a href="research.html" class="en">Research</a><a href="research.html" class="es">Investigación</a></li>
+        <li><a href="teaching.html" class="en">Teaching</a><a href="teaching.html" class="es">Docencia</a></li>
+        <li><a href="people.html" class="en">People</a><a href="people.html" class="es">Personas</a></li>
+      </ul>
+      <button class="lang-toggle" onclick="toggleLang()" id="langBtn">ES</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-dropdown" id="navDropdown">
+    <ul>
+      <li><a href="index.html" class="active en">Home</a><a href="index.html" class="active es">Inicio</a></li>
+      <li><a href="research.html" class="en">Research</a><a href="research.html" class="es">Investigación</a></li>
+      <li><a href="teaching.html" class="en">Teaching</a><a href="teaching.html" class="es">Docencia</a></li>
+      <li><a href="people.html" class="en">People</a><a href="people.html" class="es">Personas</a></li>
+    </ul>
+  </div>
 </nav>
 
 <div class="banner">
@@ -254,7 +287,6 @@ L&oacute;gica continua
 </footer>
 
 <script>
-// Bot-slowing email obfuscation
 (function() {
   var u = 'rafael.zamora_c', d = 'ucr.ac.cr';
   var addr = u + '@' + d;
@@ -281,6 +313,13 @@ function toggleLang() {
   document.querySelectorAll('.es').forEach(el => el.style.display = isES ? '' : 'none');
 }
 document.querySelectorAll('.es').forEach(el => el.style.display = 'none');
+
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const dropdown = document.getElementById('navDropdown');
+  btn.classList.toggle('open');
+  dropdown.classList.toggle('open');
+}
 </script>
 </body>
 </html>
