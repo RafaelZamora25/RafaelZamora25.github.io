@@ -23,6 +23,8 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--serif); background: var(--white); color: var(--text); font-size: 18px; line-height: 1.75; }
+  body:not(.es) .es { display: none; }
+  body.es .en { display: none; }
 
   nav { position: fixed; top: 0; left: 0; right: 0; background: var(--crimson); z-index: 100; }
   .nav-bar { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; }
@@ -97,9 +99,8 @@
   .footer-copy { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
   .footer-math { font-style: italic; font-family: var(--serif); color: var(--text-muted); font-size: 1rem; }
 
-  .es { display: none; }
   @media (max-width: 680px) {
-    .nav-links { display: none; }
+    .nav-links { display: none !important; }
     .hamburger { display: flex; }
     .event-item { grid-template-columns: 1fr; gap: 0.25rem; }
   }
@@ -206,7 +207,6 @@
     <div class="subtitle es">Teoría Descriptiva de Conjuntos · Lógica Matemática</div>
   </div>
 
-  <!-- INTERESTS -->
   <div class="section-label en">Research Interests</div>
   <div class="section-label es">Intereses de Investigación</div>
   <div class="interests-block">
@@ -216,11 +216,9 @@
     <p class="interests-text es">También me interesan las interacciones con otras áreas de la matemática, en particular la topología dinámica y la lógica continua.</p>
   </div>
 
-  <!-- PUBLICATIONS -->
   <div class="section-label en">Publications</div>
   <div class="section-label es">Publicaciones</div>
   <div class="pub-list">
-
     <div class="pub-item">
       <span class="pub-num">1</span>
       <div class="pub-body">
@@ -229,7 +227,6 @@
         <span class="journal"> <em>Topology and its Applications</em> 182 (2015), 77–97.</span>
       </div>
     </div>
-
     <div class="pub-item">
       <span class="pub-num">2</span>
       <div class="pub-body">
@@ -238,7 +235,6 @@
         <span class="journal"> <em>MLQ Mathematical Logic Quarterly</em> 65, no. 2 (2019), 134–169.</span>
       </div>
     </div>
-
     <div class="pub-item">
       <span class="pub-num">3</span>
       <div class="pub-body">
@@ -247,7 +243,6 @@
         <span class="journal"> <em>Notre Dame Journal of Formal Logic</em> 61, no. 2 (2020), 297–316.</span>
       </div>
     </div>
-
     <div class="pub-item">
       <span class="pub-num">4</span>
       <div class="pub-body">
@@ -256,23 +251,19 @@
         <span class="journal"> <em>Archive for Mathematical Logic</em> 60 (2021), 413–424.</span>
       </div>
     </div>
-
   </div>
 
-  <!-- PREPRINTS -->
   <div class="section-label en">Preprints</div>
   <div class="section-label es">Preimpresos</div>
   <div class="pub-list">
-
     <div class="pub-item">
       <span class="pub-num">1</span>
       <div class="pub-body">
         <span class="authors">Bazhenov, N.; Monin, B.; San Mauro, L.; Zamora, R.</span>
         <span class="title"> On the Computational Content of the Theory of Borel Equivalence Relations.</span>
-        <span class="journal"> <em>Oberwolfach Preprints</em> OWP-2021-06 (2021). Research in Pairs, Mathematisches Forschungsinstitut Oberwolfach. DOI: <a href="https://doi.org/10.14760/OWP-2021-06" target="_blank" style="color:var(--crimson);text-decoration:none;">10.14760/OWP-2021-06</a></span>
+        <span class="journal"> <em>Oberwolfach Preprints</em> OWP-2021-06 (2021). DOI: <a href="https://doi.org/10.14760/OWP-2021-06" target="_blank" style="color:var(--crimson);text-decoration:none;">10.14760/OWP-2021-06</a></span>
       </div>
     </div>
-
     <div class="pub-item">
       <span class="pub-num">2</span>
       <div class="pub-body">
@@ -281,63 +272,45 @@
         <span class="journal"> arXiv:2604.20998 (2026). <a href="https://arxiv.org/abs/2604.20998" target="_blank" style="color:var(--crimson);text-decoration:none;">arxiv.org/abs/2604.20998</a></span>
       </div>
     </div>
-
   </div>
 
-  <!-- GRANTS -->
   <div class="section-label en">Funding</div>
   <div class="section-label es">Financiamiento</div>
   <div class="grant-list">
-
     <div class="grant-item">
       <div class="grant-role en">Principal Investigator</div>
       <div class="grant-role es">Investigador Principal</div>
-      <div class="grant-title en">Nuevas perspectivas en el estudio de grupos dentro del universo de Shelah</div>
-      <div class="grant-title es">Nuevas perspectivas en el estudio de grupos dentro del universo de Shelah</div>
-      <div class="grant-meta en">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica</div>
-      <div class="grant-meta es">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica</div>
+      <div class="grant-title">Nuevas perspectivas en el estudio de grupos dentro del universo de Shelah</div>
+      <div class="grant-meta">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica</div>
     </div>
-
     <div class="grant-item">
       <div class="grant-role en">Collaborator</div>
       <div class="grant-role es">Colaborador</div>
-      <div class="grant-title en">Avances en la Teoría de Factorización de Vectores Suaves y Analíticos de Representaciones de Grupos de Lie</div>
-      <div class="grant-title es">Avances en la Teoría de Factorización de Vectores Suaves y Analíticos de Representaciones de Grupos de Lie</div>
-      <div class="grant-meta en">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica · 2024</div>
-      <div class="grant-meta es">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica · 2024</div>
+      <div class="grant-title">Avances en la Teoría de Factorización de Vectores Suaves y Analíticos de Representaciones de Grupos de Lie</div>
+      <div class="grant-meta">Fondo Semilla · Vicerrectoría de Investigación, Universidad de Costa Rica · 2024</div>
     </div>
-
   </div>
 
-  <!-- SERVICE -->
   <div class="section-label en">Editorial & Service</div>
   <div class="section-label es">Editorial y Servicio</div>
   <div class="grant-list" style="margin-bottom:3rem;">
-
     <div class="grant-item">
       <div class="grant-role en">Editor-in-Chief</div>
       <div class="grant-role es">Director</div>
       <div class="grant-title"><em>Revista de Matemática: Teoría y Aplicaciones</em></div>
-      <div class="grant-meta en">Universidad de Costa Rica · <a href="https://revistas.ucr.ac.cr/index.php/matematica" target="_blank" style="color:var(--crimson);text-decoration:none;">revistas.ucr.ac.cr</a></div>
-      <div class="grant-meta es">Universidad de Costa Rica · <a href="https://revistas.ucr.ac.cr/index.php/matematica" target="_blank" style="color:var(--crimson);text-decoration:none;">revistas.ucr.ac.cr</a></div>
+      <div class="grant-meta">Universidad de Costa Rica · <a href="https://revistas.ucr.ac.cr/index.php/matematica" target="_blank" style="color:var(--crimson);text-decoration:none;">revistas.ucr.ac.cr</a></div>
     </div>
-
     <div class="grant-item">
       <div class="grant-role en">Advisory Council</div>
       <div class="grant-role es">Consejo Asesor</div>
-      <div class="grant-title en">CIMPA — Centro de Investigaciones en Matemáticas Puras y Aplicadas</div>
-      <div class="grant-title es">CIMPA — Centro de Investigaciones en Matemáticas Puras y Aplicadas</div>
-      <div class="grant-meta en">Universidad de Costa Rica</div>
-      <div class="grant-meta es">Universidad de Costa Rica</div>
+      <div class="grant-title">CIMPA — Centro de Investigaciones en Matemáticas Puras y Aplicadas</div>
+      <div class="grant-meta">Universidad de Costa Rica</div>
     </div>
-
   </div>
 
-  <!-- EVENTS -->
   <div class="section-label en">Academic Events</div>
   <div class="section-label es">Eventos Académicos</div>
   <div class="event-list">
-
     <div class="event-item">
       <div>
         <div class="event-role en">Main Organizer</div>
@@ -348,7 +321,6 @@
       </div>
       <div class="event-date">July 26–30, 2022</div>
     </div>
-
     <div class="event-item">
       <div>
         <div class="event-role en">Scientific Committee</div>
@@ -360,7 +332,6 @@
       <div class="event-date en">June 2026</div>
       <div class="event-date es">Junio 2026</div>
     </div>
-
     <div class="event-item">
       <div>
         <div class="event-role en">Main Organizer</div>
@@ -372,7 +343,6 @@
       <div class="event-date en">Feb. 12–25, 2024</div>
       <div class="event-date es">12–25 feb. 2024</div>
     </div>
-
     <div class="event-item">
       <div>
         <div class="event-role en">Organizing Committee</div>
@@ -384,7 +354,6 @@
       <div class="event-date en">July 22 – Aug. 3, 2019</div>
       <div class="event-date es">22 jul. – 3 ago. 2019</div>
     </div>
-
   </div>
 
 </div>
@@ -408,20 +377,21 @@
 </footer>
 
 <script>
-  let isES = false;
-  function toggleLang() {
-    isES = !isES;
-    document.getElementById('langBtn').textContent = isES ? 'EN' : 'ES';
-    document.querySelectorAll('.en').forEach(el => el.style.display = isES ? 'none' : '');
-    document.querySelectorAll('.es').forEach(el => el.style.display = isES ? '' : 'none');
+  function setLang(es) {
+    document.body.classList.toggle('es', es);
+    document.getElementById('langBtn').textContent = es ? 'EN' : 'ES';
+    try { localStorage.setItem('lang', es ? 'es' : 'en'); } catch(e) {}
   }
-  document.querySelectorAll('.es').forEach(el => el.style.display = 'none');
-
+  function toggleLang() { setLang(!document.body.classList.contains('es')); }
+  (function() {
+    var stored;
+    try { stored = localStorage.getItem('lang'); } catch(e) {}
+    if (stored) { setLang(stored === 'es'); }
+    else { setLang((navigator.language || '').toLowerCase().startsWith('es')); }
+  })();
   function toggleMenu() {
-    const btn = document.getElementById('hamburger');
-    const dropdown = document.getElementById('navDropdown');
-    btn.classList.toggle('open');
-    dropdown.classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('navDropdown').classList.toggle('open');
   }
 </script>
 </body>
