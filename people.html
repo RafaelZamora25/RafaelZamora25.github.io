@@ -8,21 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --crimson: #9b1c1c;
-    --white: #ffffff;
-    --black: #111111;
-    --text: #1a1a1a;
-    --text-mid: #444444;
-    --text-muted: #888888;
-    --border: #e0e0e0;
-    --border-light: #f0f0f0;
-    --serif: 'EB Garamond', Georgia, serif;
-    --mono: 'DM Mono', monospace;
-    --nav-h: 56px;
+    --crimson: #9b1c1c; --white: #ffffff; --black: #111111; --text: #1a1a1a;
+    --text-mid: #444444; --text-muted: #888888; --border: #e0e0e0; --border-light: #f0f0f0;
+    --serif: 'EB Garamond', Georgia, serif; --mono: 'DM Mono', monospace; --nav-h: 56px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--serif); background: var(--white); color: var(--text); font-size: 18px; line-height: 1.75; }
+  body:not(.es) .es { display: none; }
+  body.es .en { display: none; }
 
   nav { position: fixed; top: 0; left: 0; right: 0; background: var(--crimson); z-index: 100; }
   .nav-bar { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; }
@@ -46,23 +40,18 @@
 
   .banner { margin-top: var(--nav-h); width: 100%; background: var(--white); border-bottom: 1px solid var(--border); overflow: hidden; line-height: 0; }
   .banner svg { width: 100%; height: auto; display: block; }
-
   .page { max-width: 860px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
-
   .page-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
   .page-header h1 { font-size: 2rem; font-weight: 400; color: var(--black); margin-bottom: 0.2rem; }
   .page-header .subtitle { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
-
   .section-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crimson); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
   .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 300px; }
-
   .people-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-light); margin-bottom: 3rem; border: 1px solid var(--border-light); }
   .person-card { background: var(--white); padding: 1.25rem 1.5rem; }
   .person-name { font-size: 1rem; color: var(--black); font-weight: 500; margin-bottom: 0.15rem; }
   .person-inst { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 0.35rem; }
   .person-note { font-size: 0.88rem; color: var(--text-mid); font-style: italic; line-height: 1.6; }
   .person-tag { display: inline-block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); border: 1px solid currentColor; padding: 1px 6px; border-radius: 1px; margin-bottom: 0.4rem; }
-
   footer { border-top: 2px solid var(--crimson); background: var(--white); padding: 2rem 2.5rem 1.25rem; }
   .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
   .footer-left { display: flex; flex-direction: column; gap: 0.25rem; }
@@ -76,17 +65,14 @@
   .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 1rem; }
   .footer-copy { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
   .footer-math { font-style: italic; font-family: var(--serif); color: var(--text-muted); font-size: 1rem; }
-
-  .es { display: none; }
   @media (max-width: 640px) {
-    .nav-links { display: none; }
+    .nav-links { display: none !important; }
     .hamburger { display: flex; }
     .people-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-bar">
     <a class="nav-brand" href="index.html">Rafael Zamora</a>
@@ -117,68 +103,15 @@
   <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
     <rect width="1200" height="200" fill="white"/>
     <g stroke="#111" stroke-width="1.2" stroke-linecap="round">
-      <g transform="translate(150,10)">
-        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
-        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
-        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
-        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
-        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
-        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
-        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
-        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
-        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
-        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
-        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
-        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
-        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
-      </g>
-      <g transform="translate(450,10)">
-        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
-        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
-        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
-        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
-        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
-        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
-        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
-        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
-        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
-        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
-        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
-        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
-        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
-      </g>
-      <g transform="translate(750,10)">
-        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
-        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
-        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
-        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
-        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
-        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
-        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
-        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
-        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
-        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
-        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
-        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
-        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
-      </g>
-      <g transform="translate(1050,10)">
-        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
-        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
-        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
-        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
-        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
-        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
-        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
-        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
-        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
-      </g>
+      <g transform="translate(150,10)"><line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/><line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/><line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/><line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/><line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/><line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/><line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/><circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/><circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/><text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text><text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text><text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text><text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text></g>
+      <g transform="translate(450,10)"><line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/><line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/><line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/><line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/><line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/><line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/><line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/><circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/><circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/><text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text><text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text><text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text><text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text></g>
+      <g transform="translate(750,10)"><line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/><line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/><line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/><line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/><line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/><line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/><line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/><circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/><circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/><text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text><text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text><text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text><text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text></g>
+      <g transform="translate(1050,10)"><line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/><line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/><line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/><line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/><line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/><line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/><line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/><circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/><circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/></g>
     </g>
   </svg>
 </div>
 
 <div class="page">
-
   <div class="page-header">
     <h1 class="en">People</h1>
     <h1 class="es">Personas</h1>
@@ -186,118 +119,81 @@
     <div class="subtitle es">Colaboradores · Colegas</div>
   </div>
 
-  <!-- COLLABORATORS -->
   <div class="section-label en">Collaborators</div>
   <div class="section-label es">Colaboradores</div>
-
   <div class="people-grid" style="margin-bottom:3rem;">
-
     <div class="person-card">
-      <div class="person-tag en">Advisor · Collaborator</div>
-      <div class="person-tag es">Asesor · Colaborador</div>
+      <div class="person-tag en">Advisor · Collaborator</div><div class="person-tag es">Asesor · Colaborador</div>
       <div class="person-name">Dominique Lecomte</div>
       <div class="person-inst">Institut de Mathématiques de Jussieu — Sorbonne Université</div>
       <div class="person-note en">My doctoral advisor and long-standing research collaborator in descriptive set theory.</div>
       <div class="person-note es">Mi director de tesis doctoral y colaborador de larga data en teoría descriptiva de conjuntos.</div>
     </div>
-
     <div class="person-card">
-      <div class="person-tag en">Collaborator</div>
-      <div class="person-tag es">Colaborador</div>
+      <div class="person-tag en">Collaborator</div><div class="person-tag es">Colaborador</div>
       <div class="person-name">Alexander Berenstein</div>
       <div class="person-inst">Universidad de los Andes, Bogotá</div>
       <div class="person-note en">Collaboration on Borel randomizations and model-theoretic topics.</div>
       <div class="person-note es">Colaboración en aleatorizaciones de Borel y temas model-teóricos.</div>
     </div>
-
     <div class="person-card">
-      <div class="person-tag en">Collaborator</div>
-      <div class="person-tag es">Colaborador</div>
+      <div class="person-tag en">Collaborator</div><div class="person-tag es">Colaborador</div>
       <div class="person-name">Alf Onshuus</div>
       <div class="person-inst">Universidad de los Andes, Bogotá</div>
       <div class="person-note en">Collaboration on definably amenable groups and model theory.</div>
       <div class="person-note es">Colaboración en grupos definiblemente amenables y teoría de modelos.</div>
     </div>
-
     <div class="person-card">
-      <div class="person-tag en">Collaborator</div>
-      <div class="person-tag es">Colaborador</div>
+      <div class="person-tag en">Collaborator</div><div class="person-tag es">Colaborador</div>
       <div class="person-name">Juan Felipe Carmona</div>
       <div class="person-inst">Tecnológico de Monterrey</div>
       <div class="person-note en">Ongoing collaboration on Hadamard spaces and dp-rank in continuous logic.</div>
       <div class="person-note es">Colaboración en curso sobre espacios de Hadamard y dp-rango en lógica continua.</div>
     </div>
-
     <div class="person-card">
-      <div class="person-tag en">Collaborator</div>
-      <div class="person-tag es">Colaborador</div>
+      <div class="person-tag en">Collaborator</div><div class="person-tag es">Colaborador</div>
       <div class="person-name">Kevin Davila</div>
       <div class="person-inst"></div>
       <div class="person-note en">Collaboration on fixed-point theorems for definably amenable groups.</div>
       <div class="person-note es">Colaboración en teoremas de punto fijo para grupos definiblemente amenables.</div>
     </div>
-
     <div class="person-card">
-      <div class="person-tag en">Collaborator</div>
-      <div class="person-tag es">Colaborador</div>
+      <div class="person-tag en">Collaborator</div><div class="person-tag es">Colaborador</div>
       <div class="person-name">Bruno Dinis</div>
       <div class="person-inst">Universidade de Évora</div>
       <div class="person-note en">Ongoing collaboration in continuous logic.</div>
       <div class="person-note es">Colaboración en curso en lógica continua.</div>
     </div>
-
     <div class="person-card">
-      <div class="person-tag en">Collaborator</div>
-      <div class="person-tag es">Colaborador</div>
+      <div class="person-tag en">Collaborator</div><div class="person-tag es">Colaborador</div>
       <div class="person-name">Alberto Hernández</div>
       <div class="person-inst">Universidad de Costa Rica</div>
       <div class="person-note en">Current grant collaborator.</div>
       <div class="person-note es">Colaborador en proyecto de investigación actual.</div>
     </div>
-
     <div class="person-card">
-      <div class="person-tag en">Collaborator</div>
-      <div class="person-tag es">Colaborador</div>
+      <div class="person-tag en">Collaborator</div><div class="person-tag es">Colaborador</div>
       <div class="person-name">Jasson Vindas</div>
       <div class="person-inst">Ghent University</div>
       <div class="person-note en">Current grant collaborator.</div>
       <div class="person-note es">Colaborador en proyecto de investigación actual.</div>
     </div>
-
     <div class="person-card">
-      <div class="person-tag en">Collaborator</div>
-      <div class="person-tag es">Colaborador</div>
+      <div class="person-tag en">Collaborator</div><div class="person-tag es">Colaborador</div>
       <div class="person-name">Santiago Chaves</div>
       <div class="person-inst">Universidad de Costa Rica</div>
       <div class="person-note en">Current grant collaborator.</div>
       <div class="person-note es">Colaborador en proyecto de investigación actual.</div>
     </div>
-
   </div>
 
-  <!-- COLLEAGUES -->
   <div class="section-label en">Colleagues</div>
   <div class="section-label es">Colegas</div>
-
   <div class="people-grid">
-
-    <div class="person-card">
-      <div class="person-name">Samaria Montenegro</div>
-      <div class="person-inst">Universidad de Costa Rica</div>
-    </div>
-
-    <div class="person-card">
-      <div class="person-name">Juan Gabriel Calvo</div>
-      <div class="person-inst">Universidad de Costa Rica</div>
-    </div>
-
-    <div class="person-card">
-      <div class="person-name">Adriana Sánchez</div>
-      <div class="person-inst">Universidad de Costa Rica</div>
-    </div>
-
+    <div class="person-card"><div class="person-name">Samaria Montenegro</div><div class="person-inst">Universidad de Costa Rica</div></div>
+    <div class="person-card"><div class="person-name">Juan Gabriel Calvo</div><div class="person-inst">Universidad de Costa Rica</div></div>
+    <div class="person-card"><div class="person-name">Adriana Sánchez</div><div class="person-inst">Universidad de Costa Rica</div></div>
   </div>
-
 </div>
 
 <footer>
@@ -319,20 +215,21 @@
 </footer>
 
 <script>
-  let isES = false;
-  function toggleLang() {
-    isES = !isES;
-    document.getElementById('langBtn').textContent = isES ? 'EN' : 'ES';
-    document.querySelectorAll('.en').forEach(el => el.style.display = isES ? 'none' : '');
-    document.querySelectorAll('.es').forEach(el => el.style.display = isES ? '' : 'none');
+  function setLang(es) {
+    document.body.classList.toggle('es', es);
+    document.getElementById('langBtn').textContent = es ? 'EN' : 'ES';
+    try { localStorage.setItem('lang', es ? 'es' : 'en'); } catch(e) {}
   }
-  document.querySelectorAll('.es').forEach(el => el.style.display = 'none');
-
+  function toggleLang() { setLang(!document.body.classList.contains('es')); }
+  (function() {
+    var stored;
+    try { stored = localStorage.getItem('lang'); } catch(e) {}
+    if (stored) { setLang(stored === 'es'); }
+    else { setLang((navigator.language || '').toLowerCase().startsWith('es')); }
+  })();
   function toggleMenu() {
-    const btn = document.getElementById('hamburger');
-    const dropdown = document.getElementById('navDropdown');
-    btn.classList.toggle('open');
-    dropdown.classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('navDropdown').classList.toggle('open');
   }
 </script>
 </body>
