@@ -8,21 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --crimson: #9b1c1c;
-    --white: #ffffff;
-    --black: #111111;
-    --text: #1a1a1a;
-    --text-mid: #444444;
-    --text-muted: #888888;
-    --border: #e0e0e0;
-    --border-light: #f0f0f0;
-    --serif: 'EB Garamond', Georgia, serif;
-    --mono: 'DM Mono', monospace;
-    --nav-h: 56px;
+    --crimson: #9b1c1c; --white: #ffffff; --black: #111111; --text: #1a1a1a;
+    --text-mid: #444444; --text-muted: #888888; --border: #e0e0e0; --border-light: #f0f0f0;
+    --serif: 'EB Garamond', Georgia, serif; --mono: 'DM Mono', monospace; --nav-h: 56px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--serif); background: var(--white); color: var(--text); font-size: 18px; line-height: 1.75; }
+  body:not(.es) .es { display: none; }
+  body.es .en { display: none; }
 
   nav { position: fixed; top: 0; left: 0; right: 0; background: var(--crimson); z-index: 100; }
   .nav-bar { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; }
@@ -46,46 +40,24 @@
 
   .banner { margin-top: var(--nav-h); width: 100%; background: var(--white); border-bottom: 1px solid var(--border); overflow: hidden; line-height: 0; }
   .banner svg { width: 100%; height: auto; display: block; }
-
   .page { max-width: 860px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
-
   .page-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
   .page-header h1 { font-size: 2rem; font-weight: 400; color: var(--black); margin-bottom: 0.2rem; }
   .page-header .subtitle { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    margin-bottom: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
+  .section-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crimson); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
   .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 300px; }
-
-  .current-course {
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--crimson);
-    padding: 1.75rem 2rem;
-    margin-bottom: 3rem;
-  }
+  .current-course { border: 1px solid var(--border); border-left: 3px solid var(--crimson); padding: 1.75rem 2rem; margin-bottom: 3rem; }
   .course-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
   .course-code { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; color: var(--crimson); font-weight: 400; }
   .course-name { font-size: 1.15rem; font-weight: 500; color: var(--black); }
   .course-term { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: var(--text-muted); margin-left: auto; }
   .course-desc { font-size: 0.98rem; color: var(--text-mid); line-height: 1.85; margin-top: 0.75rem; }
-
   .past-courses { margin-bottom: 3rem; }
   .course-row { display: grid; grid-template-columns: 110px 1fr; gap: 1.5rem; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid var(--border-light); }
   .course-row:first-child { border-top: 1px solid var(--border-light); }
   .course-row .code { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--text-muted); }
   .course-row .name { font-size: 0.98rem; color: var(--text-mid); }
-
   .teaching-note { font-size: 0.95rem; color: var(--text-muted); font-style: italic; border-left: 2px solid var(--border); padding-left: 1.25rem; margin-top: 2rem; line-height: 1.85; }
-
   footer { border-top: 2px solid var(--crimson); background: var(--white); padding: 2rem 2.5rem 1.25rem; }
   .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
   .footer-left { display: flex; flex-direction: column; gap: 0.25rem; }
@@ -99,10 +71,8 @@
   .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 1rem; }
   .footer-copy { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
   .footer-math { font-style: italic; font-family: var(--serif); color: var(--text-muted); font-size: 1rem; }
-
-  .es { display: none; }
   @media (max-width: 680px) {
-    .nav-links { display: none; }
+    .nav-links { display: none !important; }
     .hamburger { display: flex; }
     .course-row { grid-template-columns: 1fr; gap: 0.1rem; }
     .course-term { margin-left: 0; }
@@ -110,7 +80,6 @@
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-bar">
     <a class="nav-brand" href="index.html">Rafael Zamora</a>
@@ -141,68 +110,15 @@
   <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
     <rect width="1200" height="200" fill="white"/>
     <g stroke="#111" stroke-width="1.2" stroke-linecap="round">
-      <g transform="translate(150,10)">
-        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
-        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
-        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
-        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
-        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
-        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
-        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
-        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
-        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
-        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
-        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
-        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
-        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
-      </g>
-      <g transform="translate(450,10)">
-        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
-        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
-        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
-        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
-        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
-        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
-        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
-        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
-        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
-        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
-        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
-        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
-        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
-      </g>
-      <g transform="translate(750,10)">
-        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
-        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
-        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
-        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
-        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
-        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
-        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
-        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
-        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
-        <text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text>
-        <text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text>
-        <text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text>
-        <text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text>
-      </g>
-      <g transform="translate(1050,10)">
-        <line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/>
-        <line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/>
-        <line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/>
-        <line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/>
-        <line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/>
-        <line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/>
-        <line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/>
-        <circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/>
-        <circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/>
-      </g>
+      <g transform="translate(150,10)"><line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/><line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/><line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/><line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/><line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/><line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/><line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/><circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/><circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/><text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text><text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text><text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text><text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text></g>
+      <g transform="translate(450,10)"><line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/><line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/><line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/><line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/><line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/><line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/><line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/><circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/><circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/><text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text><text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text><text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text><text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text></g>
+      <g transform="translate(750,10)"><line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/><line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/><line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/><line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/><line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/><line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/><line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/><circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/><circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/><text x="6" y="16" font-family="'DM Mono',monospace" font-size="9" fill="#111">&#x2205;</text><text x="-70" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">0</text><text x="63" y="76" font-family="'DM Mono',monospace" font-size="8" fill="#555">1</text><text x="-105" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">00</text><text x="-44" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">01</text><text x="14" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">10</text><text x="74" y="136" font-family="'DM Mono',monospace" font-size="7" fill="#999">11</text></g>
+      <g transform="translate(1050,10)"><line x1="0" y1="20" x2="-60" y2="80"/><line x1="0" y1="20" x2="60" y2="80"/><line x1="-60" y1="80" x2="-90" y2="140"/><line x1="-60" y1="80" x2="-30" y2="140"/><line x1="60" y1="80" x2="30" y2="140"/><line x1="60" y1="80" x2="90" y2="140"/><line x1="-90" y1="140" x2="-105" y2="185"/><line x1="-90" y1="140" x2="-75" y2="185"/><line x1="-30" y1="140" x2="-45" y2="185"/><line x1="-30" y1="140" x2="-15" y2="185"/><line x1="30" y1="140" x2="15" y2="185"/><line x1="30" y1="140" x2="45" y2="185"/><line x1="90" y1="140" x2="75" y2="185"/><line x1="90" y1="140" x2="105" y2="185"/><circle cx="0" cy="20" r="2.5" fill="#111"/><circle cx="-60" cy="80" r="2.5" fill="#111"/><circle cx="60" cy="80" r="2.5" fill="#111"/><circle cx="-90" cy="140" r="2" fill="#111"/><circle cx="-30" cy="140" r="2" fill="#111"/><circle cx="30" cy="140" r="2" fill="#111"/><circle cx="90" cy="140" r="2" fill="#111"/></g>
     </g>
   </svg>
 </div>
 
 <div class="page">
-
   <div class="page-header">
     <h1 class="en">Teaching</h1>
     <h1 class="es">Docencia</h1>
@@ -210,10 +126,8 @@
     <div class="subtitle es">Escuela de Matemática · Universidad de Costa Rica</div>
   </div>
 
-  <!-- CURRENT -->
   <div class="section-label en">Current — II Semester 2026</div>
   <div class="section-label es">Actual — II Semestre 2026</div>
-
   <div class="current-course">
     <div class="course-header">
       <span class="course-code">MA-0150</span>
@@ -222,64 +136,25 @@
       <span class="course-term en">Undergraduate · II Sem. 2026</span>
       <span class="course-term es">Grado · II Sem. 2026</span>
     </div>
-    <p class="course-desc en">
-      A proof-based transition course covering the fundamentals of mathematical reasoning: logic, set theory, relations, functions, and cardinality. Emphasis on writing rigorous proofs and developing mathematical maturity.
-    </p>
-    <p class="course-desc es">
-      Curso de transición basado en demostraciones que cubre los fundamentos del razonamiento matemático: lógica, teoría de conjuntos, relaciones, funciones y cardinalidad. Se hace énfasis en la escritura de demostraciones rigurosas y el desarrollo de la madurez matemática.
-    </p>
+    <p class="course-desc en">A proof-based transition course covering the fundamentals of mathematical reasoning: logic, set theory, relations, functions, and cardinality. Emphasis on writing rigorous proofs and developing mathematical maturity.</p>
+    <p class="course-desc es">Curso de transición basado en demostraciones que cubre los fundamentos del razonamiento matemático: lógica, teoría de conjuntos, relaciones, funciones y cardinalidad. Se hace énfasis en la escritura de demostraciones rigurosas y el desarrollo de la madurez matemática.</p>
   </div>
 
-  <!-- PAST -->
   <div class="section-label en">Recent Past Courses</div>
   <div class="section-label es">Otros cursos impartidos recientemente</div>
-
   <div class="past-courses">
-    <div class="course-row">
-      <span class="code">PF-1333</span>
-      <span class="name en">Real Analysis in Several Variables</span>
-      <span class="name es">Análisis Matemático en Varias Variables</span>
-    </div>
-    <div class="course-row">
-      <span class="code">MA-0711</span>
-      <span class="name en">Logic</span>
-      <span class="name es">Lógica</span>
-    </div>
-    <div class="course-row">
-      <span class="code">MA-1005</span>
-      <span class="name en">Differential Equations</span>
-      <span class="name es">Ecuaciones Diferenciales</span>
-    </div>
-    <div class="course-row">
-      <span class="code">MA-0610</span>
-      <span class="name en">Introduction to Complex Analysis</span>
-      <span class="name es">Introducción a la Variable Compleja</span>
-    </div>
-    <div class="course-row">
-      <span class="code">MA-0710</span>
-      <span class="name en">General Topology</span>
-      <span class="name es">Topología General</span>
-    </div>
-    <div class="course-row">
-      <span class="code">MA-0250</span>
-      <span class="name en">Single-Variable Calculus I</span>
-      <span class="name es">Cálculo en una Variable I</span>
-    </div>
-    <div class="course-row">
-      <span class="code">MA-0505</span>
-      <span class="name en">Analysis I</span>
-      <span class="name es">Análisis I</span>
-    </div>
-    <div class="course-row">
-      <span class="code">MA-0025 / MA-0420</span>
-      <span class="name en">Number Theory</span>
-      <span class="name es">Teoría de Números</span>
-    </div>
+    <div class="course-row"><span class="code">PF-1333</span><span class="name en">Real Analysis in Several Variables</span><span class="name es">Análisis Matemático en Varias Variables</span></div>
+    <div class="course-row"><span class="code">MA-0711</span><span class="name en">Logic</span><span class="name es">Lógica</span></div>
+    <div class="course-row"><span class="code">MA-1005</span><span class="name en">Differential Equations</span><span class="name es">Ecuaciones Diferenciales</span></div>
+    <div class="course-row"><span class="code">MA-0610</span><span class="name en">Introduction to Complex Analysis</span><span class="name es">Introducción a la Variable Compleja</span></div>
+    <div class="course-row"><span class="code">MA-0710</span><span class="name en">General Topology</span><span class="name es">Topología General</span></div>
+    <div class="course-row"><span class="code">MA-0250</span><span class="name en">Single-Variable Calculus I</span><span class="name es">Cálculo en una Variable I</span></div>
+    <div class="course-row"><span class="code">MA-0505</span><span class="name en">Analysis I</span><span class="name es">Análisis I</span></div>
+    <div class="course-row"><span class="code">MA-0025 / MA-0420</span><span class="name en">Number Theory</span><span class="name es">Teoría de Números</span></div>
   </div>
 
   <p class="teaching-note en">Course materials are distributed through the UCR virtual platform. Students enrolled in current courses should refer to the platform for syllabi, assignments, and announcements.</p>
   <p class="teaching-note es">Los materiales del curso se distribuyen a través de la plataforma virtual de la UCR. Los estudiantes matriculados en los cursos actuales deben consultar la plataforma para acceder a los programas, tareas y avisos.</p>
-
 </div>
 
 <footer>
@@ -301,20 +176,21 @@
 </footer>
 
 <script>
-  let isES = false;
-  function toggleLang() {
-    isES = !isES;
-    document.getElementById('langBtn').textContent = isES ? 'EN' : 'ES';
-    document.querySelectorAll('.en').forEach(el => el.style.display = isES ? 'none' : '');
-    document.querySelectorAll('.es').forEach(el => el.style.display = isES ? '' : 'none');
+  function setLang(es) {
+    document.body.classList.toggle('es', es);
+    document.getElementById('langBtn').textContent = es ? 'EN' : 'ES';
+    try { localStorage.setItem('lang', es ? 'es' : 'en'); } catch(e) {}
   }
-  document.querySelectorAll('.es').forEach(el => el.style.display = 'none');
-
+  function toggleLang() { setLang(!document.body.classList.contains('es')); }
+  (function() {
+    var stored;
+    try { stored = localStorage.getItem('lang'); } catch(e) {}
+    if (stored) { setLang(stored === 'es'); }
+    else { setLang((navigator.language || '').toLowerCase().startsWith('es')); }
+  })();
   function toggleMenu() {
-    const btn = document.getElementById('hamburger');
-    const dropdown = document.getElementById('navDropdown');
-    btn.classList.toggle('open');
-    dropdown.classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('navDropdown').classList.toggle('open');
   }
 </script>
 </body>
