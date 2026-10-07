@@ -23,6 +23,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--serif); background: var(--white); color: var(--text); font-size: 18px; line-height: 1.75; }
+body:not(.es) .es { display: none; }
+body.es .en { display: none; }
 nav { position: fixed; top: 0; left: 0; right: 0; background: var(--crimson); z-index: 100; }
 .nav-bar { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; }
 .nav-brand { font-family: var(--serif); font-size: 1.05rem; color: var(--white); font-weight: 400; letter-spacing: 0.02em; text-decoration: none; }
@@ -76,10 +78,9 @@ footer { border-top: 2px solid var(--crimson); background: var(--white); padding
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 1rem; }
 .footer-copy { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
 .footer-math { font-style: italic; font-family: var(--serif); color: var(--text-muted); font-size: 1rem; }
-.es { display: none; }
 @media (max-width: 680px) {
   .page { grid-template-columns: 1fr; gap: 2.5rem; }
-  .nav-links { display: none; }
+  .nav-links { display: none !important; }
   .hamburger { display: flex; }
   .name-block h1 { font-size: 1.8rem; }
   .banner { margin-top: var(--nav-h); }
@@ -305,18 +306,31 @@ L&oacute;gica continua
   }
 })();
 
-let isES = false;
-function toggleLang() {
-  isES = !isES;
-  document.getElementById('langBtn').textContent = isES ? 'EN' : 'ES';
-  document.querySelectorAll('.en').forEach(el => el.style.display = isES ? 'none' : '');
-  document.querySelectorAll('.es').forEach(el => el.style.display = isES ? '' : 'none');
+function setLang(es) {
+  document.body.classList.toggle('es', es);
+  document.getElementById('langBtn').textContent = es ? 'EN' : 'ES';
+  try { localStorage.setItem('lang', es ? 'es' : 'en'); } catch(e) {}
 }
-document.querySelectorAll('.es').forEach(el => el.style.display = 'none');
+
+function toggleLang() {
+  setLang(!document.body.classList.contains('es'));
+}
+
+// Initialise: stored preference > browser language > default EN
+(function() {
+  var stored;
+  try { stored = localStorage.getItem('lang'); } catch(e) {}
+  if (stored) {
+    setLang(stored === 'es');
+  } else {
+    var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    setLang(browserLang.startsWith('es'));
+  }
+})();
 
 function toggleMenu() {
-  const btn = document.getElementById('hamburger');
-  const dropdown = document.getElementById('navDropdown');
+  var btn = document.getElementById('hamburger');
+  var dropdown = document.getElementById('navDropdown');
   btn.classList.toggle('open');
   dropdown.classList.toggle('open');
 }
